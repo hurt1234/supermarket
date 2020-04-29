@@ -3,7 +3,7 @@
    <ic-slider :autoplay="3000">
       <ic-slider-item v-for="item in banners" :key="item.link">
         <a :href="item.link">
-          <img :src="item.image" >
+          <img :src="item.image" @load="imageLoad" >
        </a>
       </ic-slider-item>
     </ic-slider>
@@ -15,7 +15,7 @@ import { IcSlider,IcSliderItem } from "components/common/swiperCopy/index";
 export default {
    data () {
       return {
-        
+        isLoad:false
 
       };
    },
@@ -32,11 +32,19 @@ export default {
    components: {
      IcSlider,
      IcSliderItem
-                 },
+  },
 
-   computed: {},
-
-   methods: {}
+  
+   methods: {
+    
+     imageLoad(){
+        if(!this.isLoad) {
+        this.$emit('swiperImageLoad')
+        this.isLoad=true
+     }
+       
+     }
+   }
 }
 </script>
 <style lang='css' scoped>
