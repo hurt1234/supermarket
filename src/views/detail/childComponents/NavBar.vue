@@ -4,7 +4,7 @@
        <div slot="left" class="back" @click="backClick" >
          <img src="~assets/img/common/back.svg" alt="">
        </div>
-       <div slot="center" class="center">
+       <div slot="center" class="center" >
          <div v-for="(item,index) in titles" :key="index" @click="itemClick(index)" :class="{active:currentIndex==index}">{{item}}</div>
 
        </div>
@@ -28,7 +28,10 @@ export default {
    },
    methods: {
      itemClick(index){
-       this.currentIndex=index
+       this.currentIndex=index;
+       this.$emit('itemClick',index)
+       
+       
 
      },
      backClick(){

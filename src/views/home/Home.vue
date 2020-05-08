@@ -72,13 +72,16 @@ export default {
 
   },
   activated(){
+    
+    
     this.$refs.scroll.backTop(0,this.saveY,0);
     this.$refs.scroll.refresh()
     
 
   },
   deactivated(){
-    this.saveY=this.$refs.scroll.scroll.y
+   
+    this.saveY=this.$refs.scroll.getScrollY()
 
   },
    methods: {
